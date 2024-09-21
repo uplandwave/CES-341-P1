@@ -1,0 +1,22 @@
+{
+  "name": "ces-341-p1",
+  "version": "1.0.0",
+  "description": "My First Project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uplandwave/CES-341-P1.git"
+  },
+  "author": "Luke Briggs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uplandwave/CES-341-P1/issues"
+  },
+  "homepage": "https://github.com/uplandwave/CES-341-P1#readme",
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}

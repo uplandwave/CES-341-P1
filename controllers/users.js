@@ -1,3 +1,4 @@
+const { response } = require('express');
 const mongodb = require('../data/databace');
 const ObjectId = require('mongodb').ObjectId;
 
@@ -18,7 +19,51 @@ const getSingle = async (req, res) => {
     });
 };
 
+const createUser = async (req ,res) => {
+    const user = {
+        email: req.body.email,
+        username: req.body.username,
+        name: req.body.name,
+        ipaddress: req.body.ipaddress
+    };
+    const response = await mongodb.getDatabace().db().collection('users').insertOne(user);
+    if (response.acknowledged) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error || `Some error occured while creating the user.`);
+    }
+};
+
+const updateUser = async (req ,res) => {
+    const userId = new ObjectId(req.params.id);
+    const user = {
+        email: req.body.email,
+        username: req.body.username,
+        name: req.body.name,
+        ipaddress: req.body.ipaddress
+    };
+    const response = await mongodb.getDatabace().db().collection('users').replaceOne({ _id: userId }, user);
+    if (response.modifiedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error  || 'Some error occured while updating the user.');
+    }
+};
+
+const deleteUser = async (req ,res) => {
+    const userId = new ObjectId(req.params.id);
+    const response = await mongodb.getDatabace().db().collection('users').deleteOne({ _id: userId });
+    if (response.deletedCount > 0) {
+        res.status(204).send();
+    } else {
+        res.status(500).json(response.error  || 'Some error occured while deleting the user.');
+    }
+};
+
 module.exports = {
     getAll,
-    getSingle
+    getSingle,
+    createUser,
+    updateUser,
+    deleteUser
 };

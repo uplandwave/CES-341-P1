@@ -31,3 +31,38 @@ content-type: application/json
 }
 ### DETETE contact
 DELETE http://localhost:3000/users/66f708923df7d373cc289417 HTTP/1.1
+
+
+//POSTED LINK
+### Get all users
+GET http://ces-341-p1.onrender.com/users
+
+
+### Get contact by id
+GET http://ces-341-p1.onrender.com/users/66ef00c66d730f13716e7837
+
+
+### Create contact
+POST http://ces-341-p1.onrender.com/users HTTP/1.1
+content-type: application/json
+
+{
+  "email": "test@example.com",
+  "username": "test1",
+  "name": "hello",
+  "ipaddress": "1.1.1.1"
+}
+
+
+### PUT contact
+PUT http://ces-341-p1.onrender.com/users/66f70388527bfe831bdfae76 HTTP/1.1
+content-type: application/json
+
+{
+  "email": "test@example.com",
+  "username": "test2",
+  "name": "hello2",
+  "ipaddress": "1.1.1.12"
+}
+### DETETE contact
+DELETE http://ces-341-p1.onrender.com/users/66f708923df7d373cc289417 HTTP/1.1
